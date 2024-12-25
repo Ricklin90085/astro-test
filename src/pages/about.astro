@@ -1,5 +1,26 @@
 ---
+const pageTitle = "Astro 關於我";
 
+const identity = {
+  firstName: "Peter",
+  lastName: "Parker",
+  occupation: "Web Developer",
+  hobbies: ["coding", "reading", "traveling"],
+};
+
+const skills = [
+  "HTML",
+  "CSS",
+  "JavaScript",
+  "React",
+  "Node.js",
+  "Express",
+  "MongoDB",
+];
+
+const happy = false;
+const finished = true;
+const goals = 3;
 ---
 
 <html lang="en">
@@ -8,14 +29,25 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro 關於我</title>
+    <title>{pageTitle}</title>
   </head>
   <body>
     <a href="/">首頁</a>
     <a href="/about">關於我</a>
     <a href="/blog">部落格</a>
-    <h1>關於我</h1>
-    <h2>我是一個 Astro 開發者</h2>
-    <p>我喜歡 Astro 的簡潔和高效。</p>
+    <h1>{pageTitle}</h1>
+    <p>關於我的幾個事實</p>
+    <ul>
+      <li>我是：{identity.firstName} {identity.lastName}</li>
+      <li>我的職業是：{identity.occupation}</li>
+      <li>我的愛好是：{identity.hobbies.join(", ")}</li>
+    </ul>
+    <p>我的技能是</p>
+    <ul>
+      {skills.map((skill) => <li>{skill}</li>)}
+    </ul>
+    {happy && <p>我很快樂</p>}
+    {finished && <p>我已經完成了</p>}
+    {goals > 0 ? <p>我有一個目標</p> : <p>我沒有目標</p>}
   </body>
 </html>
